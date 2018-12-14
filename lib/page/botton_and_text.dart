@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../common/head.dart';
+
 class ButtonAndText extends StatelessWidget{
 
   @override
@@ -9,7 +11,16 @@ class ButtonAndText extends StatelessWidget{
         title: Text("Botton And Text"),
       ),
       body: Center(
-        child: Text("Example"),
+        child: Column(
+          children: <Widget>[
+            new Heading(
+              title: "1.Text",
+            ),
+            new Heading(
+              title: "1.Button",
+            )
+          ],
+        )
       )
     );
   }
