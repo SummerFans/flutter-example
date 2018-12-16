@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import './page/widget_base.dart';
-import './page/botton_and_text.dart';
+import './page/text_page.dart';
+import './page/button_page.dart';
 import './page/image_widget.dart';
+import './page/layout_widget.dart';
 
 import './common/button.dart';
 
@@ -36,9 +38,14 @@ class _HomePage extends State<HomePage> {
     }));
   }
 
-  void _toButtonAndTextHandle() {
+  void _toTextHandle() {
     Navigator.push(context, new MaterialPageRoute(builder: (context){
-      return ButtonAndText();
+      return TextPage();
+    }));
+  }
+  void _toButtonHandle() {
+    Navigator.push(context, new MaterialPageRoute(builder: (context){
+      return ButtonPage();
     }));
   }
 
@@ -50,7 +57,7 @@ class _HomePage extends State<HomePage> {
 
   void _toLayoutHandle() {
     Navigator.push(context, new MaterialPageRoute(builder: (context){
-      return ImageWidget();
+      return LayoutWidget();
     }));
   }
 
@@ -69,16 +76,21 @@ class _HomePage extends State<HomePage> {
               ),
               new HomeButton(
                 color: Colors.lightBlue[500],
-                textName: "Button and Text Widget",
-                onChanged: _toButtonAndTextHandle,
+                textName: "Text Widget",
+                onChanged: _toTextHandle,
               ),
               new HomeButton(
                 color: Colors.lightBlue[400],
+                textName: "Button Widget",
+                onChanged: _toButtonHandle,
+              ),
+              new HomeButton(
+                color: Colors.lightBlue[500],
                 textName: "Image Widget",
                 onChanged: _toImageAndTextHandle,
               ),
               new HomeButton(
-                color: Colors.lightBlue[500],
+                color: Colors.lightBlue[400],
                 textName: "Layout Widget",
                 onChanged: _toLayoutHandle,
               )
