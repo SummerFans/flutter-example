@@ -125,15 +125,6 @@ class WidgetListView extends StatelessWidget {
                   },
                 ),
               ),
-
-              /**
-           * GridView
-           */
-              Container(
-                padding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
-                child:
-                    Text("ListView.builder", style: TextStyle(fontSize: 20.0)),
-              ),
             ],
           ),
         ));
