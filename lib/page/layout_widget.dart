@@ -88,6 +88,15 @@ class LayoutWidget extends StatelessWidget {
           new Container(width: 80.0, height:80.0, color: Colors.brown,),
           new Container(width: 80.0, height:80.0,  color: Colors.purple,),
         ],
+      ),
+      Container(
+        decoration: BoxDecoration(
+          color: Colors.red,
+        ),
+        constraints: BoxConstraints(
+          minWidth: double.infinity,
+          minHeight: 10.0,
+        ),
       )
        ]),
    ); 

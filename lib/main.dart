@@ -5,6 +5,7 @@ import './page/text_page.dart';
 import './page/button_page.dart';
 import './page/image_widget.dart';
 import './page/layout_widget.dart';
+import './page/scrollable.dart';
 
 import './common/button.dart';
 
@@ -61,6 +62,12 @@ class _HomePage extends State<HomePage> {
     }));
   }
 
+  void _toScrollableHandle() {
+    Navigator.push(context, new MaterialPageRoute(builder: (context){
+      return ScrollablePage();
+    }));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,6 +76,7 @@ class _HomePage extends State<HomePage> {
           color: Colors.black12,
           child: ListView(
             children: <Widget>[
+
               new HomeButton(
                 color: Colors.lightBlue[400],
                 textName: "Widget Base",
@@ -84,7 +92,7 @@ class _HomePage extends State<HomePage> {
                 textName: "Button Widget",
                 onChanged: _toButtonHandle,
               ),
-              new HomeButton(
+              HomeButton(
                 color: Colors.lightBlue[500],
                 textName: "Image Widget",
                 onChanged: _toImageAndTextHandle,
@@ -93,6 +101,11 @@ class _HomePage extends State<HomePage> {
                 color: Colors.lightBlue[400],
                 textName: "Layout Widget",
                 onChanged: _toLayoutHandle,
+              ),
+              new HomeButton(
+                color: Colors.lightBlue[500],
+                textName: "Scrollable Widget",
+                onChanged: _toScrollableHandle,
               )
             ],
           ),
