@@ -38,6 +38,7 @@ flutter:
     - assets/images/bg.png
     - assets/images/banner_01.jpg
     - assets/images/banner.jpg
+    - assets/images/nike.jpg
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

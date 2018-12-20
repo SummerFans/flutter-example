@@ -1,6 +1,38 @@
 import 'package:flutter/material.dart';
 
-class WidgetGridView extends StatelessWidget {
+class WidgetGridView extends StatefulWidget {
+  WidgetGridView({Key key}):super(key: key);
+
+
+  _WidgetGridView createState() => new _WidgetGridView();
+
+}
+
+class _WidgetGridView extends State<WidgetGridView> {
+
+  List<IconData> _icons = []; //保存Icon数据
+
+  void initState() {
+    // 初始化数据  
+    super.initState();
+    _retrieveIcons();
+  }
+
+  //模拟异步获取数据
+  void _retrieveIcons() {
+    Future.delayed(Duration(milliseconds: 100)).then((e) {
+      setState(() {
+        _icons.addAll([
+          Icons.ac_unit,
+          Icons.airport_shuttle,
+          Icons.all_inclusive,
+          Icons.beach_access, Icons.cake,
+          Icons.free_breakfast
+        ]);
+      });
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -85,21 +117,26 @@ class WidgetGridView extends StatelessWidget {
               padding: EdgeInsets.all(20.0),
               color: Colors.black,
               alignment: Alignment.center,
-              child: Text("GridView.builder",
-                  style: TextStyle(color: Colors.white, fontSize: 15.0)),
+              child: Text("GridView.builder",style: TextStyle(color: Colors.white, fontSize: 15.0)),
             ),
-            // Container(
-            //   child: GridView.builder(
-            //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            //       crossAxisCount: 3,
-            //       childAspectRatio: 1.0,
-            //     ),
-            //     itemBuilder: (context, index) {
-            //       //如果显示到最后一个并且Icon总数小于200时继续获取数据
-            //       return null;
-            //     },
-            //   ),
-            // )
+            Container(
+              width: double.infinity,
+              height: 200.0,
+              child: GridView.builder(
+                itemCount: _icons.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  childAspectRatio: 1.0,
+                ),
+                itemBuilder: (BuildContext context, int index) {
+                  //如果显示到最后一个并且Icon总数小于200时继续获取数据
+                  if (index == _icons.length - 1 && _icons.length < 100) {
+                    _retrieveIcons();
+                  }
+                  return Icon(_icons[index]);
+                },
+              ),
+            )
           ],
         ));
   }

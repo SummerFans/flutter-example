@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../widget/listview.dart';
 import '../widget/gridview.dart';
+import '../widget/custmscrollview.dart';
 
 import '../common/button.dart';
 
@@ -20,6 +21,12 @@ class ScrollablePage extends StatelessWidget {
       }));
     }
 
+    void _toCustomScrollViewHandle() {
+      Navigator.push(context, new MaterialPageRoute(builder: (context) {
+        return WidgetCustomScrollView();
+      }));
+    }
+
     return Scaffold(
         appBar: AppBar(title: Text("Scrollable")),
         body: ListView(
@@ -33,6 +40,11 @@ class ScrollablePage extends StatelessWidget {
               color: Colors.lightBlue[400],
               textName: "GridView",
               onChanged: _toGridViewHandle,
+            ),
+            HomeButton(
+              color: Colors.lightBlue[500],
+              textName: "CustomScrollView",
+              onChanged: _toCustomScrollViewHandle,
             )
           ],
         ));

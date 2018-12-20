@@ -6,10 +6,57 @@ import './page/button_page.dart';
 import './page/image_widget.dart';
 import './page/layout_widget.dart';
 import './page/scrollable.dart';
+import './page/theme.dart';
+import './page/animation.dart';
 
 import './common/button.dart';
 
 void main() => runApp(MyApp());
+
+class FadeRoute extends PageRoute {
+  FadeRoute({
+    @required this.builder,
+    this.transitionDuration = const Duration(milliseconds: 300),
+    this.opaque = true,
+    this.barrierDismissible = false,
+    this.barrierColor,
+    this.barrierLabel,
+    this.maintainState = true,
+  });
+
+  final WidgetBuilder builder;
+
+  @override
+  final Duration transitionDuration;
+
+  @override
+  final bool opaque;
+
+  @override
+  final bool barrierDismissible;
+
+  @override
+  final Color barrierColor;
+
+  @override
+  final String barrierLabel;
+
+  @override
+  final bool maintainState;
+
+  @override
+  Widget buildPage(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation) => builder(context);
+
+  @override
+  Widget buildTransitions(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation, Widget child) {
+     return FadeTransition( 
+       opacity: animation,
+       child: builder(context),
+     );
+  }
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -23,7 +70,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
 
@@ -32,41 +78,55 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePage extends State<HomePage> {
-
   void _toWidgetBaseHandle() {
-    Navigator.push(context, new MaterialPageRoute(builder: (context){
+    Navigator.push(context, new FadeRoute(builder: (context) {
       return WidgetBasePage();
     }));
   }
 
   void _toTextHandle() {
-    Navigator.push(context, new MaterialPageRoute(builder: (context){
+    Navigator.push(context, new MaterialPageRoute(builder: (context) {
       return TextPage();
     }));
   }
+
   void _toButtonHandle() {
-    Navigator.push(context, new MaterialPageRoute(builder: (context){
+    Navigator.push(context, new MaterialPageRoute(builder: (context) {
       return ButtonPage();
     }));
   }
 
   void _toImageAndTextHandle() {
-    Navigator.push(context, new MaterialPageRoute(builder: (context){
+    Navigator.push(context, new MaterialPageRoute(builder: (context) {
       return ImageWidget();
     }));
   }
 
   void _toLayoutHandle() {
-    Navigator.push(context, new MaterialPageRoute(builder: (context){
+    Navigator.push(context, new MaterialPageRoute(builder: (context) {
       return LayoutWidget();
     }));
   }
 
   void _toScrollableHandle() {
-    Navigator.push(context, new MaterialPageRoute(builder: (context){
+    Navigator.push(context, new MaterialPageRoute(builder: (context) {
       return ScrollablePage();
     }));
   }
+
+  void _toThemeHandle() {
+    Navigator.push(context, new MaterialPageRoute(builder: (context) {
+      return ThemePage();
+    }));
+  }
+
+  void _toAnimationHandle() {
+    Navigator.push(
+        context,
+        new MaterialPageRoute(builder: (context) {
+            return AnimationPage();
+        }));
+}
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +136,6 @@ class _HomePage extends State<HomePage> {
           color: Colors.black12,
           child: ListView(
             children: <Widget>[
-
               new HomeButton(
                 color: Colors.lightBlue[400],
                 textName: "Widget Base",
@@ -106,6 +165,16 @@ class _HomePage extends State<HomePage> {
                 color: Colors.lightBlue[500],
                 textName: "Scrollable Widget",
                 onChanged: _toScrollableHandle,
+              ),
+              new HomeButton(
+                color: Colors.lightBlue[400],
+                textName: "Theme",
+                onChanged: _toThemeHandle,
+              ),
+              HomeButton(
+                color: Colors.lightBlue[500],
+                textName: "Animation",
+                onChanged: _toAnimationHandle,
               )
             ],
           ),
