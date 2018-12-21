@@ -16,7 +16,7 @@ void main() => runApp(MyApp());
 class FadeRoute extends PageRoute {
   FadeRoute({
     @required this.builder,
-    this.transitionDuration = const Duration(milliseconds: 300),
+    this.transitionDuration = const Duration(milliseconds: 100),
     this.opaque = true,
     this.barrierDismissible = false,
     this.barrierColor,
