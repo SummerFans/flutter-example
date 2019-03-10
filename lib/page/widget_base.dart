@@ -52,7 +52,7 @@ class _WidgetBasePage extends State<WidgetBasePage> {
             ),
             // 传递开始
             new LessState(
-              title: "my is Title",
+              title: this._active? "父状态：yes":"父状态：no",
               description: "my is description",
             ),
             Container(
@@ -60,6 +60,7 @@ class _WidgetBasePage extends State<WidgetBasePage> {
               child: Text("2.StatefulWidget数据传递状态管理",
                   style: TextStyle(fontSize: 20.0)),
             ),
+            // 父状态管理
             new ReceiveState(
               active: _active,
               onChange: _showDialog,
@@ -69,6 +70,7 @@ class _WidgetBasePage extends State<WidgetBasePage> {
               child: Text("3.StatefulWidget自己管理状态",
                   style: TextStyle(fontSize: 20.0)),
             ),
+            // 组件内状态
             new StateManger(),
           ],
         ));
