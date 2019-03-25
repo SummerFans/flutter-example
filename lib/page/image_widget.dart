@@ -28,7 +28,7 @@ class ImageWidget extends StatelessWidget {
             FadeInImage.assetNetwork(
               fadeInCurve: Curves.bounceIn,
               placeholder: 'assets/images/bg.png',
-              image: "https://cdn-images-1.medium.com/max/2000/1*Tw3nQm56cAelelYUZ95leA.jpeg",
+              image: "https://cdn.arstechnica.net/wp-content/uploads/2018/12/7-800x272.jpg",
             ),
             Container(
               margin: EdgeInsets.symmetric(vertical: 10.0),
